@@ -1,0 +1,484 @@
+
+2022-08-03 00:37:31,080 [INFO] Stop polling...
+2022-08-03 00:37:31,080 [WARNING] Goodbye!
+2022-08-03 00:37:31,886 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 00:37:32,029 [WARNING] Updates were skipped successfully.
+2022-08-03 00:37:32,029 [INFO] Start polling.
+2022-08-03 00:42:15,532 [INFO] Stop polling...
+2022-08-03 00:42:15,532 [WARNING] Goodbye!
+2022-08-03 00:42:16,477 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 00:42:16,619 [WARNING] Updates were skipped successfully.
+2022-08-03 00:42:16,620 [INFO] Start polling.
+2022-08-03 00:42:18,464 [INFO] Stop polling...
+2022-08-03 00:42:18,464 [WARNING] Goodbye!
+2022-08-03 00:46:19,465 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 00:46:19,613 [WARNING] Updates were skipped successfully.
+2022-08-03 00:46:19,614 [INFO] Start polling.
+2022-08-03 00:46:22,012 [INFO] Stop polling...
+2022-08-03 00:46:22,013 [WARNING] Goodbye!
+2022-08-03 00:48:49,986 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 00:48:50,125 [WARNING] Updates were skipped successfully.
+2022-08-03 00:48:50,126 [INFO] Start polling.
+2022-08-03 01:00:04,853 [INFO] Stop polling...
+2022-08-03 01:00:04,853 [WARNING] Goodbye!
+2022-08-03 01:00:05,673 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:00:05,816 [WARNING] Updates were skipped successfully.
+2022-08-03 01:00:05,817 [INFO] Start polling.
+2022-08-03 01:00:10,517 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=NameError("name 'chat_id' is not defined")>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 219, in promocode_button
+    user: models.User = models.User.get(chat_id=chat_id)
+NameError: name 'chat_id' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 221, in promocode_button
+    await bot.send_message(chat_id, messages.not_met)
+NameError: name 'chat_id' is not defined
+2022-08-03 01:00:28,589 [INFO] Stop polling...
+2022-08-03 01:00:28,589 [WARNING] Goodbye!
+2022-08-03 01:00:29,344 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:00:29,481 [WARNING] Updates were skipped successfully.
+2022-08-03 01:00:29,481 [INFO] Start polling.
+2022-08-03 01:00:32,696 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=IntegrityError('UNIQUE constraint failed: user.chat_id')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+sqlite3.IntegrityError: UNIQUE constraint failed: user.chat_id
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 225, in promocode_button
+    user.save()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 6692, in save
+    rows = self.update(**field_dict).where(self._pk_expr()).execute()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1927, in inner
+    return method(self, database, *args, **kwargs)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1998, in execute
+    return self._execute(database)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2511, in _execute
+    cursor = database.execute(self)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3210, in execute
+    return self.execute_sql(sql, params, commit=commit)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3194, in execute_sql
+    with __exception_wrapper__:
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2970, in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 191, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+peewee.IntegrityError: UNIQUE constraint failed: user.chat_id
+2022-08-03 01:01:29,967 [INFO] Stop polling...
+2022-08-03 01:01:29,967 [WARNING] Goodbye!
+2022-08-03 01:01:30,741 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:01:30,882 [WARNING] Updates were skipped successfully.
+2022-08-03 01:01:30,883 [INFO] Start polling.
+2022-08-03 01:01:38,667 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=NameError("name 'chat_id' is not defined")>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 205, in promocode_button
+    user: models.User = models.User.get(chat_id=chat_id)
+NameError: name 'chat_id' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 207, in promocode_button
+    await bot.send_message(chat_id, messages.not_met)
+NameError: name 'chat_id' is not defined
+2022-08-03 01:01:52,234 [INFO] Stop polling...
+2022-08-03 01:01:52,235 [WARNING] Goodbye!
+2022-08-03 01:01:53,018 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:01:53,151 [WARNING] Updates were skipped successfully.
+2022-08-03 01:01:53,151 [INFO] Start polling.
+2022-08-03 01:04:00,488 [INFO] Stop polling...
+2022-08-03 01:04:00,488 [WARNING] Goodbye!
+2022-08-03 01:04:01,255 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:04:01,404 [WARNING] Updates were skipped successfully.
+2022-08-03 01:04:01,405 [INFO] Start polling.
+2022-08-03 01:04:04,394 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=IntegrityError('UNIQUE constraint failed: user.chat_id')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+sqlite3.IntegrityError: UNIQUE constraint failed: user.chat_id
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 211, in promocode_button
+    user.save()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 6692, in save
+    rows = self.update(**field_dict).where(self._pk_expr()).execute()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1927, in inner
+    return method(self, database, *args, **kwargs)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1998, in execute
+    return self._execute(database)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2511, in _execute
+    cursor = database.execute(self)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3210, in execute
+    return self.execute_sql(sql, params, commit=commit)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3194, in execute_sql
+    with __exception_wrapper__:
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2970, in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 191, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+peewee.IntegrityError: UNIQUE constraint failed: user.chat_id
+2022-08-03 01:05:57,133 [INFO] Stop polling...
+2022-08-03 01:05:57,133 [WARNING] Goodbye!
+2022-08-03 01:05:57,939 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:05:58,077 [WARNING] Updates were skipped successfully.
+2022-08-03 01:05:58,077 [INFO] Start polling.
+2022-08-03 01:05:59,603 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=IntegrityError('UNIQUE constraint failed: user.chat_id')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+sqlite3.IntegrityError: UNIQUE constraint failed: user.chat_id
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 211, in promocode_button
+    user.save(force_insert=True)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 6694, in save
+    pk = self.insert(**field_dict).execute()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1927, in inner
+    return method(self, database, *args, **kwargs)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1998, in execute
+    return self._execute(database)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2798, in _execute
+    return super(Insert, self)._execute(database)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2511, in _execute
+    cursor = database.execute(self)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3210, in execute
+    return self.execute_sql(sql, params, commit=commit)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3194, in execute_sql
+    with __exception_wrapper__:
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2970, in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 191, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+peewee.IntegrityError: UNIQUE constraint failed: user.chat_id
+2022-08-03 01:10:07,887 [INFO] Stop polling...
+2022-08-03 01:10:07,888 [WARNING] Goodbye!
+2022-08-03 01:10:08,696 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:10:08,833 [WARNING] Updates were skipped successfully.
+2022-08-03 01:10:08,833 [INFO] Start polling.
+2022-08-03 01:10:11,916 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=IntegrityError('UNIQUE constraint failed: user.chat_id')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+sqlite3.IntegrityError: UNIQUE constraint failed: user.chat_id
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 211, in promocode_button
+    user.save()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 6692, in save
+    rows = self.update(**field_dict).where(self._pk_expr()).execute()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1927, in inner
+    return method(self, database, *args, **kwargs)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1998, in execute
+    return self._execute(database)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2511, in _execute
+    cursor = database.execute(self)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3210, in execute
+    return self.execute_sql(sql, params, commit=commit)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3194, in execute_sql
+    with __exception_wrapper__:
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2970, in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 191, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+peewee.IntegrityError: UNIQUE constraint failed: user.chat_id
+2022-08-03 01:11:23,823 [INFO] Stop polling...
+2022-08-03 01:11:23,824 [WARNING] Goodbye!
+2022-08-03 01:11:24,575 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:11:24,711 [WARNING] Updates were skipped successfully.
+2022-08-03 01:11:24,711 [INFO] Start polling.
+2022-08-03 01:11:35,915 [INFO] Stop polling...
+2022-08-03 01:11:35,915 [WARNING] Goodbye!
+2022-08-03 01:12:13,144 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:12:13,289 [WARNING] Updates were skipped successfully.
+2022-08-03 01:12:13,289 [INFO] Start polling.
+2022-08-03 01:12:47,493 [INFO] Stop polling...
+2022-08-03 01:12:47,493 [WARNING] Goodbye!
+2022-08-03 01:13:51,625 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:13:51,772 [WARNING] Updates were skipped successfully.
+2022-08-03 01:13:51,772 [INFO] Start polling.
+2022-08-03 01:14:00,921 [INFO] New user with data: {'data': {'id': 77, 'first': 'Рома', 'middle': '', 'second': 'Фахрутдинов', 'telegram': None, 'deeplink': 'test', 'score': 50, 'team': None}}
+2022-08-03 01:14:00,926 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=KeyError('team')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 103, in start
+    await bot.send_message(message.chat.id, messages.welcome_message.format(name=user_object["first"]),
+KeyError: 'team'
+2022-08-03 01:15:04,151 [INFO] Stop polling...
+2022-08-03 01:15:04,151 [WARNING] Goodbye!
+2022-08-03 01:15:05,004 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:15:05,162 [WARNING] Updates were skipped successfully.
+2022-08-03 01:15:05,162 [INFO] Start polling.
+2022-08-03 01:15:57,674 [INFO] Stop polling...
+2022-08-03 01:15:57,674 [WARNING] Goodbye!
+2022-08-03 01:15:58,440 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:15:58,576 [WARNING] Updates were skipped successfully.
+2022-08-03 01:15:58,576 [INFO] Start polling.
+2022-08-03 01:16:01,736 [INFO] New user with data: {'data': {'id': 77, 'first': 'Рома', 'middle': '', 'second': 'Фахрутдинов', 'telegram': None, 'deeplink': 'test', 'score': 50, 'team': None}}
+2022-08-03 01:16:44,051 [INFO] New user with data: {'data': {'id': 77, 'first': 'Рома', 'middle': '', 'second': 'Фахрутдинов', 'telegram': None, 'deeplink': 'test', 'score': 50, 'team': None}}
+2022-08-03 01:17:57,861 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-48' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=OperationalError('database is locked')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+sqlite3.OperationalError: database is locked
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 225, in promocode_button
+    user.save()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 6692, in save
+    rows = self.update(**field_dict).where(self._pk_expr()).execute()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1927, in inner
+    return method(self, database, *args, **kwargs)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1998, in execute
+    return self._execute(database)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2511, in _execute
+    cursor = database.execute(self)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3210, in execute
+    return self.execute_sql(sql, params, commit=commit)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3194, in execute_sql
+    with __exception_wrapper__:
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2970, in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 191, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+peewee.OperationalError: database is locked
+2022-08-03 01:19:25,409 [INFO] Stop polling...
+2022-08-03 01:19:25,409 [WARNING] Goodbye!
+2022-08-03 01:19:26,245 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:19:26,395 [WARNING] Updates were skipped successfully.
+2022-08-03 01:19:26,395 [INFO] Start polling.
+2022-08-03 01:20:14,008 [INFO] Stop polling...
+2022-08-03 01:20:14,008 [WARNING] Goodbye!
+2022-08-03 01:20:14,785 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:20:14,926 [WARNING] Updates were skipped successfully.
+2022-08-03 01:20:14,926 [INFO] Start polling.
+2022-08-03 01:20:16,835 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError('BaseException.with_traceback() takes exactly one argument (0 given)')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 205, in promocode_button
+    user: models.User = models.User.select().where(chat_id=chat_id).get()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 719, in inner
+    method(clone, *args, **kwargs)
+TypeError: Query.where() got an unexpected keyword argument 'chat_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 207, in promocode_button
+    logging.error(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2022-08-03 01:21:42,674 [INFO] Stop polling...
+2022-08-03 01:21:42,675 [WARNING] Goodbye!
+2022-08-03 01:21:43,480 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:21:43,627 [WARNING] Updates were skipped successfully.
+2022-08-03 01:21:43,627 [INFO] Start polling.
+2022-08-03 01:22:28,099 [INFO] Stop polling...
+2022-08-03 01:22:28,099 [WARNING] Goodbye!
+2022-08-03 01:22:28,860 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:22:29,002 [WARNING] Updates were skipped successfully.
+2022-08-03 01:22:29,002 [INFO] Start polling.
+2022-08-03 01:23:06,016 [INFO] Stop polling...
+2022-08-03 01:23:06,017 [WARNING] Goodbye!
+2022-08-03 01:23:06,763 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:23:06,909 [WARNING] Updates were skipped successfully.
+2022-08-03 01:23:06,910 [INFO] Start polling.
+2022-08-03 01:28:38,622 [INFO] Stop polling...
+2022-08-03 01:28:38,622 [WARNING] Goodbye!
+2022-08-03 01:28:39,447 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:28:39,612 [WARNING] Updates were skipped successfully.
+2022-08-03 01:28:39,612 [INFO] Start polling.
+2022-08-03 01:29:10,721 [INFO] Stop polling...
+2022-08-03 01:29:10,721 [WARNING] Goodbye!
+2022-08-03 01:29:11,538 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:29:11,679 [WARNING] Updates were skipped successfully.
+2022-08-03 01:29:11,679 [INFO] Start polling.
+2022-08-03 01:29:12,566 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError('BaseException.with_traceback() takes exactly one argument (0 given)')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 218, in turn_off_admin_button
+    query = models.User.update(admin_mode=False).where(chat_id=chat_id)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 719, in inner
+    method(clone, *args, **kwargs)
+TypeError: Query.where() got an unexpected keyword argument 'chat_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 221, in turn_off_admin_button
+    print(e.with_traceback())
+TypeError: BaseException.with_traceback() takes exactly one argument (0 given)
+2022-08-03 01:29:38,939 [INFO] Stop polling...
+2022-08-03 01:29:38,939 [WARNING] Goodbye!
+2022-08-03 01:29:39,755 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:29:39,901 [WARNING] Updates were skipped successfully.
+2022-08-03 01:29:39,901 [INFO] Start polling.
+2022-08-03 01:29:45,172 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=NameError("name 'user' is not defined")>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 221, in turn_off_admin_button
+    await bot.send_message(user.chat_id, messages.admin_mode.format(state="Выключен"),
+NameError: name 'user' is not defined
+2022-08-03 01:31:33,134 [INFO] Stop polling...
+2022-08-03 01:31:33,134 [WARNING] Goodbye!
+2022-08-03 01:31:33,939 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:31:34,086 [WARNING] Updates were skipped successfully.
+2022-08-03 01:31:34,086 [INFO] Start polling.
+2022-08-03 01:33:49,376 [INFO] Stop polling...
+2022-08-03 01:33:49,376 [WARNING] Goodbye!
+2022-08-03 01:33:50,261 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:33:50,402 [WARNING] Updates were skipped successfully.
+2022-08-03 01:33:50,403 [INFO] Start polling.
+2022-08-03 01:39:46,041 [INFO] Stop polling...
+2022-08-03 01:39:46,042 [WARNING] Goodbye!
+2022-08-03 01:39:59,104 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:39:59,258 [WARNING] Updates were skipped successfully.
+2022-08-03 01:39:59,259 [INFO] Start polling.
+2022-08-03 01:40:47,884 [INFO] Stop polling...
+2022-08-03 01:40:47,885 [WARNING] Goodbye!
+2022-08-03 01:40:48,686 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:40:48,847 [WARNING] Updates were skipped successfully.
+2022-08-03 01:40:48,847 [INFO] Start polling.
+2022-08-03 01:40:50,229 [INFO] Stop polling...
+2022-08-03 01:40:50,229 [WARNING] Goodbye!
+2022-08-03 01:41:16,712 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 01:41:16,860 [WARNING] Updates were skipped successfully.
+2022-08-03 01:41:16,860 [INFO] Start polling.
