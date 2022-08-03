@@ -2,11 +2,11 @@ greatings_message = "Привет я бот"
 
 welcome_message = "Добро пожаловать {name}."
 
-user_not_found = "Я не нашёл тебя в базе данных, пожалуйста обратись к куратору"
+user_not_found = "Я не нашёл тебя в базе данных, пожалуйста обратись к ментору"
 
 score_message = "У тебя <b>{score}</b> битов"
 
-daily_report_message = "{report}\nВ итоге у тебя {daily_score} битов за сегодня"
+daily_report_message = "{report}\n\nВ итоге у тебя <b>{daily_score}</b> битов за сегодня"
 
 error_message = "Произошла ошибка. Ваши верные подданые уже бегут её исправлять"
 
@@ -34,9 +34,11 @@ data_not_found_message = "Я не нашёл запрашиваемые данн
 
 send_confirmation_message = "Отправить это {info}?"
 
-question_arrived_message = "У меня к тебе появился вопросnОтветишь?"
+question_arrived_message = "У меня к тебе появился вопрос. Ответишь?"
 
 question_message = "{question}\n\nЧтобы ответить на вопрос напиши мне сообщение с ответом"
+
+
 
 # Phrases
 

@@ -482,3 +482,362 @@ NameError: name 'user' is not defined
 2022-08-03 01:41:16,712 [INFO] Bot: Unlock [@lkunlock_bot]
 2022-08-03 01:41:16,860 [WARNING] Updates were skipped successfully.
 2022-08-03 01:41:16,860 [INFO] Start polling.
+2022-08-03 03:20:45,156 [INFO] Stop polling...
+2022-08-03 03:20:45,156 [WARNING] Goodbye!
+2022-08-03 23:30:24,323 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:30:24,472 [WARNING] Updates were skipped successfully.
+2022-08-03 23:30:24,472 [INFO] Start polling.
+2022-08-03 23:31:47,460 [INFO] Stop polling...
+2022-08-03 23:31:47,460 [WARNING] Goodbye!
+2022-08-03 23:31:48,266 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:31:48,415 [WARNING] Updates were skipped successfully.
+2022-08-03 23:31:48,415 [INFO] Start polling.
+2022-08-03 23:31:57,630 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-26' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=JSONDecodeError('Expecting value: line 2 column 1 (char 1)')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 120, in answer_question
+    await unlock_api.sendAnswer(user.id, question_id, answer)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 55, in sendAnswer
+    data = await self._post("bot/answer/", {"id": user_id, "function_id": question_id, "answer": answer})
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 30, in _post
+    return json.loads(data)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+2022-08-03 23:32:25,661 [INFO] Stop polling...
+2022-08-03 23:32:25,661 [WARNING] Goodbye!
+2022-08-03 23:32:26,588 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:32:26,732 [WARNING] Updates were skipped successfully.
+2022-08-03 23:32:26,733 [INFO] Start polling.
+2022-08-03 23:32:36,955 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-26' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=JSONDecodeError('Expecting value: line 2 column 1 (char 1)')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 120, in answer_question
+    await unlock_api.sendAnswer(user.id, question_id, answer)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 56, in sendAnswer
+    data = await self._post("bot/answer/", {"id": user_id, "function_id": question_id, "answer": answer})
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 31, in _post
+    return json.loads(data)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+2022-08-03 23:35:10,239 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-38' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=JSONDecodeError('Expecting value: line 1 column 1 (char 0)')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 120, in answer_question
+    await unlock_api.sendAnswer(user.id, question_id, answer)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 56, in sendAnswer
+    data = await self._post("bot/answer/", {"id": user_id, "function_id": question_id, "answer": answer})
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 31, in _post
+    return json.loads(data)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2022-08-03 23:35:22,267 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-43' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=JSONDecodeError('Expecting value: line 1 column 1 (char 0)')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 120, in answer_question
+    await unlock_api.sendAnswer(user.id, question_id, answer)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 56, in sendAnswer
+    data = await self._post("bot/answer/", {"id": user_id, "function_id": question_id, "answer": answer})
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 31, in _post
+    return json.loads(data)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2022-08-03 23:35:24,555 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-48' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=JSONDecodeError('Expecting value: line 1 column 1 (char 0)')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 120, in answer_question
+    await unlock_api.sendAnswer(user.id, question_id, answer)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 56, in sendAnswer
+    data = await self._post("bot/answer/", {"id": user_id, "function_id": question_id, "answer": answer})
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 31, in _post
+    return json.loads(data)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2022-08-03 23:36:23,642 [INFO] Stop polling...
+2022-08-03 23:36:23,642 [WARNING] Goodbye!
+2022-08-03 23:36:24,492 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:36:24,644 [WARNING] Updates were skipped successfully.
+2022-08-03 23:36:24,644 [INFO] Start polling.
+2022-08-03 23:36:37,450 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-26' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=JSONDecodeError('Expecting value: line 1 column 1 (char 0)')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 120, in answer_question
+    await unlock_api.sendAnswer(user.id, question_id, answer)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 56, in sendAnswer
+    data = await self._post("bot/answer/", {"id": user_id, "function_id": question_id, "answer": answer, "type": 2})
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 31, in _post
+    return json.loads(data)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2022-08-03 23:39:35,658 [INFO] Stop polling...
+2022-08-03 23:39:35,659 [WARNING] Goodbye!
+2022-08-03 23:39:36,499 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:39:36,647 [WARNING] Updates were skipped successfully.
+2022-08-03 23:39:36,647 [INFO] Start polling.
+2022-08-03 23:40:04,520 [INFO] Stop polling...
+2022-08-03 23:40:04,520 [WARNING] Goodbye!
+2022-08-03 23:40:05,300 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:40:05,436 [WARNING] Updates were skipped successfully.
+2022-08-03 23:40:05,437 [INFO] Start polling.
+2022-08-03 23:41:04,458 [INFO] Stop polling...
+2022-08-03 23:41:04,459 [WARNING] Goodbye!
+2022-08-03 23:41:05,344 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:41:05,521 [WARNING] Updates were skipped successfully.
+2022-08-03 23:41:05,522 [INFO] Start polling.
+2022-08-03 23:41:12,894 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-15' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=JSONDecodeError('Expecting value: line 1 column 1 (char 0)')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 121, in answer_question
+    await unlock_api.sendAnswer(user.id, question_id, answer)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 56, in sendAnswer
+    data = await self._post("bot/answer/", {"id": user_id, "function_id": question_id, "answer": answer,
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 31, in _post
+    return json.loads(data)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2022-08-03 23:52:21,334 [INFO] Stop polling...
+2022-08-03 23:52:21,335 [WARNING] Goodbye!
+2022-08-03 23:52:22,320 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:52:22,457 [WARNING] Updates were skipped successfully.
+2022-08-03 23:52:22,457 [INFO] Start polling.
+2022-08-03 23:52:39,987 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-18' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=JSONDecodeError('Expecting value: line 1 column 1 (char 0)')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 145, in promocode_enter
+    await unlock_api.sendPromocode(user.id, promocode_model.id)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 63, in sendPromocode
+    data = await self._post("bot/answer/", {"id": user_id, "function_id": code_id, "type": 1})
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 31, in _post
+    return json.loads(data)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2022-08-03 23:55:27,960 [INFO] Stop polling...
+2022-08-03 23:55:27,961 [WARNING] Goodbye!
+2022-08-03 23:55:28,989 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:55:29,148 [WARNING] Updates were skipped successfully.
+2022-08-03 23:55:29,148 [INFO] Start polling.
+2022-08-03 23:58:24,321 [INFO] Stop polling...
+2022-08-03 23:58:24,321 [WARNING] Goodbye!
+2022-08-03 23:58:25,236 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:58:25,380 [WARNING] Updates were skipped successfully.
+2022-08-03 23:58:25,380 [INFO] Start polling.
+2022-08-03 23:59:07,603 [INFO] Stop polling...
+2022-08-03 23:59:07,603 [WARNING] Goodbye!
+2022-08-03 23:59:08,581 [INFO] Bot: Unlock [@lkunlock_bot]
+2022-08-03 23:59:08,732 [WARNING] Updates were skipped successfully.
+2022-08-03 23:59:08,732 [INFO] Start polling.
+2022-08-04 00:05:36,760 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-42' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=IntegrityError('UNIQUE constraint failed: vote.id')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+sqlite3.IntegrityError: UNIQUE constraint failed: vote.id
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 248, in update_db
+    await unlock_api.update_db()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 84, in update_db
+    Choice.delete().execute()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 6484, in create
+    inst.save(force_insert=True)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 6694, in save
+    pk = self.insert(**field_dict).execute()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1927, in inner
+    return method(self, database, *args, **kwargs)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1998, in execute
+    return self._execute(database)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2798, in _execute
+    return super(Insert, self)._execute(database)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2511, in _execute
+    cursor = database.execute(self)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3210, in execute
+    return self.execute_sql(sql, params, commit=commit)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3194, in execute_sql
+    with __exception_wrapper__:
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2970, in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 191, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+peewee.IntegrityError: UNIQUE constraint failed: vote.id
+2022-08-04 00:07:24,817 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-53' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=IntegrityError('UNIQUE constraint failed: vote.id')>
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+sqlite3.IntegrityError: UNIQUE constraint failed: vote.id
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\main.py", line 248, in update_db
+    await unlock_api.update_db()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\utils\unlockapi.py", line 84, in update_db
+    Choice.delete().execute()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 6484, in create
+    inst.save(force_insert=True)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 6694, in save
+    pk = self.insert(**field_dict).execute()
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1927, in inner
+    return method(self, database, *args, **kwargs)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 1998, in execute
+    return self._execute(database)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2798, in _execute
+    return super(Insert, self)._execute(database)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2511, in _execute
+    cursor = database.execute(self)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3210, in execute
+    return self.execute_sql(sql, params, commit=commit)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3194, in execute_sql
+    with __exception_wrapper__:
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 2970, in __exit__
+    reraise(new_type, new_type(exc_value, *exc_args), traceback)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 191, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Roman\PycharmProjects\unlockbot\venv\lib\site-packages\peewee.py", line 3197, in execute_sql
+    cursor.execute(sql, params or ())
+peewee.IntegrityError: UNIQUE constraint failed: vote.id
+2022-08-04 00:08:39,926 [INFO] Stop polling...
+2022-08-04 00:08:39,926 [WARNING] Goodbye!

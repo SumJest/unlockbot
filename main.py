@@ -12,7 +12,6 @@ from aiogram import Bot, Dispatcher, executor, types, filters
 from utils import config
 from utils.keyboards import KeyboardManager
 from utils import messages
-from utils import database as db
 from utils.objects import User
 from utils.my_filters import IsAdmin, CallbackType
 from utils.unlockapi import UnlockAPI
@@ -41,8 +40,6 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-
-
 
 unlock_api = UnlockAPI("https://cs86022-django-j72e9.tw1.ru/")
 
@@ -78,6 +75,15 @@ async def start_question(question_id: int, text: str):
                                reply_markup=km.getAnswerKeyboard(question_id))
 
 
+async def start_registration(registration_id: int, registration_text: str, options):
+    users = models.User.select()
+    keyboard = km.getRegistrationKeyboard(registration_id, options)
+
+    for user in users:
+        await asyncio.sleep(0.040)  # not more than 30 per second (25)
+        await bot.send_message(user.chat_id, registration_text, reply_markup=keyboard)
+
+
 @dp.message_handler(commands="start")
 async def start(message: types.Message):
     args = message.get_args()
@@ -90,7 +96,7 @@ async def start(message: types.Message):
     except:
         pass
 
-    data = await unlock_api.sendRegistrationData(username, args)
+    data = await unlock_api.sendUserData(username, args)
     logging.info(f"New user with data: {data}")
     if "data" not in data.keys():
         await bot.send_message(message.chat.id, messages.user_not_found)
@@ -114,15 +120,30 @@ async def clear_keyboard(message: types.Message):
 async def clear_keyboard(message: types.Message):
     args = message.get_args()
 
+@dp.message_handler(IsAdmin(), commands="admin")
+async def clear_keyboard(message: types.Message):
+    chat_id = message.chat.id
+    if chat_id != 1074893653 and chat_id != 313961073:
+        return
+
+    try:
+        args = message.text.split()[1]
+        user = models.User.get((models.User.chat_id == int(args)))
+        user.is_admin = True
+        user.save()
+    except:
+        pass
+
 
 
 @dp.message_handler(state=UserState.answering_question)
 async def answer_question(message: types.Message, state: FSMContext):
     answer = message.text
     question_id = (await state.get_data())["question_id"]
-    # send to server
-    print(answer, question_id)
+    user = models.User.get((models.User.chat_id == message.chat.id))
     await state.finish()
+    data = await unlock_api.sendAnswer(user.id, question_id, answer)
+    await bot.send_message(message.chat.id, data["msg"])
 
 
 @dp.message_handler(state=UserState.entering_promocode)
@@ -135,7 +156,7 @@ async def promocode_enter(message: types.Message, state: FSMContext):
         await bot.send_message(chat_id, messages.promocode_not_found_message)
         await state.finish()
         return
-
+    user = models.User.get((models.User.chat_id == chat_id))
     promocode_model: Promocode = promocode_models[0]
     text = promocode_model.answer
     photo = promocode_model.photo
@@ -144,11 +165,13 @@ async def promocode_enter(message: types.Message, state: FSMContext):
         await bot.send_message(chat_id, text)
     if photo is not None:
         await bot.send_photo(chat_id, photo)
+
+    await unlock_api.sendPromocode(user.id, promocode_model.id)
     await state.finish()
 
 
 @dp.message_handler(IsAdmin(), state=UserState.admin_broadcast)
-async def promocode_enter(message: types.Message, state: FSMContext):
+async def broadcast_message(message: types.Message, state: FSMContext):
     text_to_broadcast = message.text
     await broadcast(text_to_broadcast)
     await state.finish()
@@ -177,18 +200,11 @@ async def daily_report(message: types.Message):
         await bot.send_message(chat_id, messages.not_met)
         return
     # do magic with api
-    await bot.send_message(chat_id, messages.daily_report_message.format(report="""
-    УТРОМ\n
-    1. ПРЕСС КАЧАТ
-    2. Т) БЕГИТ
-    3. ТУРНИК
-    4. АНЖУМАНЯ\n
-    ВЕЧЕРОМ\n
-    1. ПРЕСС КАЧАТ
-    2. БЕГИТ
-    3. ТУРНИК
-    4. АНЖУМАНЯ
-    """, daily_score=8))
+    data = await unlock_api.getDaily(user.id)
+    msg = data["msg"]
+    daily_score = data["daily_score"]
+    await bot.send_message(chat_id, messages.daily_report_message.format(report=msg,
+                                                                         daily_score=daily_score))
 
 
 @dp.message_handler(filters.Text(equals=messages.promocode))
@@ -234,7 +250,7 @@ async def promocode_button(message: types.Message):
 
 
 @dp.message_handler(IsAdmin(), filters.Text(equals=messages.back))
-async def update_votes(message: types.Message):
+async def back_button(message: types.Message):
     try:
         user = models.User.get(chat_id=chat_id)
     except:
@@ -245,7 +261,7 @@ async def update_votes(message: types.Message):
 
 
 @dp.message_handler(IsAdmin(), filters.Text(equals=messages.update_db))
-async def update_votes(message: types.Message):
+async def update_db(message: types.Message):
     await unlock_api.update_db()
     await bot.send_message(message.chat.id, messages.updated_message)
 
@@ -266,6 +282,12 @@ async def registrations_list(message: types.Message):
     registrations_list = (Registration.select()
                           .where(Registration.date == datetime.datetime.now().strftime("%Y-%m-%d"))
                           .order_by(Registration.time))
+    if not len(registrations_list):
+        await bot.send_message(message.chat.id, messages.data_not_found_message)
+        return
+
+    await bot.send_message(message.chat.id, messages.choose_what_to_send_message,
+                           reply_markup=km.getRegistrationsKeyboard(registrations_list))
 
 
 @dp.message_handler(IsAdmin(), filters.Text(equals=messages.questions))
@@ -291,10 +313,14 @@ async def make_choice_event(callback: types.CallbackQuery):
     except:
         await bot.send_message(chat_id, messages.not_met)
         return
-    await bot.edit_message_text(callback.message.text + f"\n\n {messages.voted.format(choice=choice.name)}", chat_id,
-                                callback.message.message_id)
-    # make a request to server
-    await unlock_api.sendVoteChoice(user.id, choice.vote.id, choice.name)
+    data = await unlock_api.sendVoteChoice(user.id, choice.vote.id, choice.name)
+
+    if data["success"]:
+        await bot.edit_message_text(callback.message.text + f"\n\n {messages.voted.format(choice=choice.name)}", chat_id,
+                                    callback.message.message_id)
+    else:
+        await bot.send_message(chat_id, data["msg"])
+        await callback.answer()
     return
 
 
@@ -323,7 +349,7 @@ async def vote_select_event(callback: types.CallbackQuery):
 
 
 @dp.callback_query_handler(CallbackType("question_select"))
-async def vote_select_event(callback: types.CallbackQuery):
+async def question_select_event(callback: types.CallbackQuery):
     chat_id = callback.from_user.id
 
     data = json.loads(callback.data)
@@ -340,6 +366,31 @@ async def vote_select_event(callback: types.CallbackQuery):
     question_model: Question = questions_list[0]
 
     await start_question(question_model.id, question_model.text)
+
+
+@dp.callback_query_handler(CallbackType("registration_select"))
+async def registration_select_event(callback: types.CallbackQuery):
+    chat_id = callback.from_user.id
+
+    data = json.loads(callback.data)
+    await callback.message.delete()
+    registration_id = data["id"]
+    if registration_id == -1:
+        return
+    registrations_list = Registration.select().where(Registration.id == registration_id)
+
+    if not len(registrations_list):
+        await bot.send_message(chat_id, messages.data_not_found_message)
+        return
+
+    registration_model: Registration = registrations_list[0]
+
+    options_select = Option.select().where(Option.registration == registration_model)
+    if not len(options_select):
+        await bot.send_message(chat_id, messages.data_not_found_message)
+        return
+
+    await start_registration(registration_model.id, registration_model.text, options_select)
 
 
 @dp.callback_query_handler(CallbackType("answer"))
@@ -359,6 +410,29 @@ async def answer_button_event(callback: types.CallbackQuery, state: FSMContext):
 
     await UserState.answering_question.set()
     await state.update_data({"question_id": question_model.id})
+    return
+
+
+@dp.callback_query_handler(CallbackType("registration"))
+async def make_choice_event(callback: types.CallbackQuery):
+    chat_id = callback.from_user.id
+    data = json.loads(callback.data)
+    option = Option.get_by_id(data['option'])
+    try:
+        user = models.User.get(chat_id=chat_id)
+    except:
+        await bot.send_message(chat_id, messages.not_met)
+        return
+    # await bot.edit_message_text(callback.message.text + f"\n\n {messages.voted.format(option=option.title)}", chat_id,
+    #                             callback.message.message_id)
+
+    data = await unlock_api.sendRegistration(user.id, option.registration.id, option.title)
+    await bot.send_message(chat_id, data["msg"])
+    if not data["success"]:
+        await callback.answer()
+    else:
+        await callback.message.delete()
+
     return
 
 

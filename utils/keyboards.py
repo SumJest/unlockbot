@@ -5,7 +5,6 @@ from aiogram import types
 from utils import messages
 from utils.models import User
 
-
 from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, \
     InlineKeyboardButton
 
@@ -22,7 +21,7 @@ class KeyboardManager:
             keyboard.add(messages.update_db)
             keyboard.add(messages.votes)
             keyboard.add(messages.questions)
-            # keyboard.add(messages.)
+            keyboard.add(messages.registrations)
             keyboard.add(messages.turn_off_admin)
         else:
             keyboard.add(messages.score_request, messages.daily_report, messages.promocode)
@@ -37,8 +36,16 @@ class KeyboardManager:
             data = json.dumps({"type": "vote", "id": vote_id, "choice": choice.get_id()})
             vote_keyboard.add(InlineKeyboardButton(text=choice.name, callback_data=data))
 
-
         return vote_keyboard
+
+    def getRegistrationKeyboard(self, registration_id: int, options):
+        registration_keyboard = InlineKeyboardMarkup()
+
+        for option in options:
+            data = json.dumps({"type": "registration", "id": registration_id, "option": option.get_id()})
+            registration_keyboard.add(InlineKeyboardButton(text=option.title, callback_data=data))
+
+        return registration_keyboard
 
     def getVotesListKeyboard(self, votes):
         votes_list = InlineKeyboardMarkup()
@@ -64,11 +71,25 @@ class KeyboardManager:
 
         return questions_list
 
+    def getRegistrationsKeyboard(self, registrations):
+        registrations_list = InlineKeyboardMarkup()
+
+        for registration in registrations:
+            data = {"type": "registration_select", "id": registration.id}
+            registrations_list.add(InlineKeyboardButton(text=registration.title, callback_data=json.dumps(data)))
+
+        data = {"type": "registration_select", "id": -1}
+        registrations_list.add(InlineKeyboardButton(text=messages.cancel, callback_data=json.dumps(data)))
+
+        return registrations_list
+
     def getAnswerKeyboard(self, question_id: int):
         answerkeyboard = InlineKeyboardMarkup()
         data = dict(type="answer", id=question_id)
         answerkeyboard.add(InlineKeyboardButton(text=messages.answer, callback_data=json.dumps(data)))
         return answerkeyboard
+
+
 
     def getCancelKeyboard(self):
         keyboard = types.reply_keyboard.ReplyKeyboardMarkup(resize_keyboard=True)
