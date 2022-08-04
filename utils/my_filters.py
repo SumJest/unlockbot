@@ -1,15 +1,20 @@
 import json
+import logging
 
 from aiogram import types
 from aiogram.dispatcher.filters import BoundFilter
-from utils import database as db
+from utils.models import User
 
 
 class IsAdmin(BoundFilter):
     async def check(self, message: types.Message) -> bool:
         chat_id = message.chat.id
-        is_admin = db.is_admin(chat_id)
-        return is_admin if is_admin is not None else False
+        try:
+            user = User.get((User.chat_id == chat_id))
+        except Exception as e:
+            logging.info(e.args)
+            return False
+        return user.is_admin
 
 
 class CallbackType(BoundFilter):

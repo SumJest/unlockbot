@@ -2,6 +2,7 @@ import logging
 import typing
 import requests
 import aiohttp
+import traceback
 from utils.objects import *
 from utils.models import Vote, Choice, Question, Registration, Promocode, Option
 
@@ -82,29 +83,27 @@ class UnlockAPI:
         Question.delete().execute()
         Vote.delete().execute()
         Choice.delete().execute()
-        print(data)
         for function in data["data"]:
             try:
-                match function["TYPE"]:
-                    case 1:  # promocode
-                        promocode_model = Promocode.create(**function)
-                        promocode_model.save()
-                    case 2:  # Question
-                        question_mode = Question.create(**function)
-                        question_mode.save()
-                    case 3:  # Vote
-                        vote_model = Vote.create(**function)
+                if function["TYPE"] == 1:  # promocode
+                    promocode_model = Promocode.create(**function)
+                    promocode_model.save()
+                elif function["TYPE"] == 2:  # Question
+                    question_mode = Question.create(**function)
+                    question_mode.save()
+                elif function["TYPE"] == 3:  # Vote
+                    vote_model = Vote.create(**function)
 
-                        vote_model.save()
-                        for choice in function['choices']:
-                            choice_model = Choice.create(vote=vote_model, name=choice)
-                            choice_model.save()
-                    case 4:  # Registration
-                        registration_model = Registration.create(**function)
-                        registration_model.save()
-                        for option in function['options']:
-                            option_model = Option.create(**option, registration=registration_model)
-                            option_model.save()
+                    vote_model.save()
+                    for choice in function['choices']:
+                        choice_model = Choice.create(vote=vote_model, name=choice)
+                        choice_model.save()
+                elif function["TYPE"] == 4:  # Registration
+                    registration_model = Registration.create(**function)
+                    registration_model.save()
+                    for option in function['options']:
+                        option_model = Option.create(**option, registration=registration_model)
+                        option_model.save()
             except Exception as e:
-                logging.error(e.args)
+                logging.error(traceback.format_exc())
                 continue

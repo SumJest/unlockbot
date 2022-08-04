@@ -2,6 +2,7 @@ import asyncio
 import datetime
 import json
 import logging
+import traceback
 import typing
 import sys
 import requests
@@ -54,7 +55,10 @@ async def broadcast(text: str):
     users = models.User.select()
     for user in users:
         await asyncio.sleep(0.040)  # not more than 30 per second (25)
-        await bot.send_message(user.chat_id, text)
+        try:
+            await bot.send_message(user.chat_id, text)
+        except:
+            pass
 
 
 async def start_voting(vote_id: int, vote: str, choices):
@@ -116,10 +120,6 @@ async def clear_keyboard(message: types.Message):
                            reply_markup=types.reply_keyboard.ReplyKeyboardRemove())
 
 
-@dp.message_handler(IsAdmin(), commands="test")
-async def clear_keyboard(message: types.Message):
-    args = message.get_args()
-
 @dp.message_handler(IsAdmin(), commands="admin")
 async def clear_keyboard(message: types.Message):
     chat_id = message.chat.id
@@ -132,16 +132,15 @@ async def clear_keyboard(message: types.Message):
         user.is_admin = True
         user.save()
     except:
-        pass
-
+        logging.error(traceback.format_exc())
 
 
 @dp.message_handler(state=UserState.answering_question)
 async def answer_question(message: types.Message, state: FSMContext):
+    await state.finish()
     answer = message.text
     question_id = (await state.get_data())["question_id"]
     user = models.User.get((models.User.chat_id == message.chat.id))
-    await state.finish()
     data = await unlock_api.sendAnswer(user.id, question_id, answer)
     await bot.send_message(message.chat.id, data["msg"])
 
@@ -150,11 +149,11 @@ async def answer_question(message: types.Message, state: FSMContext):
 async def promocode_enter(message: types.Message, state: FSMContext):
     promocode = message.text
     chat_id = message.chat.id
+    await state.finish()
     promocode_models = Promocode.select().where((Promocode.date == datetime.datetime.now().date().strftime("%Y-%m-%d")),
                                                 (Promocode.code == promocode))
     if not len(promocode_models):
         await bot.send_message(chat_id, messages.promocode_not_found_message)
-        await state.finish()
         return
     user = models.User.get((models.User.chat_id == chat_id))
     promocode_model: Promocode = promocode_models[0]
@@ -167,14 +166,14 @@ async def promocode_enter(message: types.Message, state: FSMContext):
         await bot.send_photo(chat_id, photo)
 
     await unlock_api.sendPromocode(user.id, promocode_model.id)
-    await state.finish()
+
 
 
 @dp.message_handler(IsAdmin(), state=UserState.admin_broadcast)
 async def broadcast_message(message: types.Message, state: FSMContext):
     text_to_broadcast = message.text
-    await broadcast(text_to_broadcast)
     await state.finish()
+    await broadcast(text_to_broadcast)
 
 
 @dp.message_handler(filters.Text(equals=messages.score_request))
@@ -316,7 +315,8 @@ async def make_choice_event(callback: types.CallbackQuery):
     data = await unlock_api.sendVoteChoice(user.id, choice.vote.id, choice.name)
 
     if data["success"]:
-        await bot.edit_message_text(callback.message.text + f"\n\n {messages.voted.format(choice=choice.name)}", chat_id,
+        await bot.edit_message_text(callback.message.text + f"\n\n {messages.voted.format(choice=choice.name)}",
+                                    chat_id,
                                     callback.message.message_id)
     else:
         await bot.send_message(chat_id, data["msg"])
