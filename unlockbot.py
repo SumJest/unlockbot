@@ -70,7 +70,7 @@ async def start_voting(vote_id: int, vote: str, choices):
         await bot.send_message(user.chat_id, vote, reply_markup=keyboard)
 
 
-async def start_question(question_id: int, text: str):
+async def start_question(question_id: int):
     users = models.User.select()
 
     for user in users:
@@ -137,9 +137,9 @@ async def clear_keyboard(message: types.Message):
 
 @dp.message_handler(state=UserState.answering_question)
 async def answer_question(message: types.Message, state: FSMContext):
-    await state.finish()
     answer = message.text
     question_id = (await state.get_data())["question_id"]
+    await state.finish()
     user = models.User.get((models.User.chat_id == message.chat.id))
     data = await unlock_api.sendAnswer(user.id, question_id, answer)
     await bot.send_message(message.chat.id, data["msg"])
@@ -166,7 +166,6 @@ async def promocode_enter(message: types.Message, state: FSMContext):
         await bot.send_photo(chat_id, photo)
 
     await unlock_api.sendPromocode(user.id, promocode_model.id)
-
 
 
 @dp.message_handler(IsAdmin(), state=UserState.admin_broadcast)

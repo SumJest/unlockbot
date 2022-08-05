@@ -1,6 +1,6 @@
 greatings_message = "Привет я бот"
 
-welcome_message = "Добро пожаловать {name}."
+welcome_message = "Добро пожаловать, <b>{name}</b>."
 
 user_not_found = "Я не нашёл тебя в базе данных, пожалуйста обратись к ментору"
 

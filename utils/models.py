@@ -56,9 +56,9 @@ class Registration(BaseModel):
 class Option(BaseModel):
     title = TextField()
     count = IntegerField()
-    max = IntegerField()
+    max = IntegerField(null=True)
     registration = ForeignKeyField(Registration)
 
 
 db.connect()
-# db.create_tables([User,])
+db.create_tables([Option,])
