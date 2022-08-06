@@ -5,6 +5,8 @@ import logging
 import traceback
 import typing
 import sys
+
+import peewee
 import requests
 import aiohttp
 
@@ -16,6 +18,7 @@ from utils import messages
 from utils.objects import User
 from utils.my_filters import IsAdmin, CallbackType
 from utils.unlockapi import UnlockAPI
+from utils.qr import generate_and_save
 from utils import models
 from utils.models import Promocode, Vote, Choice, Registration, Option, Question
 from aiogram.utils.deep_linking import get_start_link
@@ -107,18 +110,31 @@ async def start(message: types.Message):
         return
 
     user_object = data["data"]
+
     user = models.User.create(chat_id=message.chat.id, id=user_object["id"])
     user.save()
-    # add field id to user object
     await bot.send_message(message.chat.id, messages.welcome_message.format(name=user_object["first"]),
                            reply_markup=km.getMainKeyboard(user))
-
+    if "qr" in user_object:
+        qr_data = user_object["qr"]
+        qr_file = await generate_and_save(user, qr_data)
+        await bot.send_message(message.chat.id, messages.qr_code_message)
+        await bot.send_photo(message.chat.id, photo=open(qr_file, "rb").read())
 
 @dp.message_handler(IsAdmin(), commands="clear")
 async def clear_keyboard(message: types.Message):
     await bot.send_message(chat_id=message.chat.id, text=messages.cleared_message,
                            reply_markup=types.reply_keyboard.ReplyKeyboardRemove())
 
+
+@dp.message_handler(IsAdmin(), commands="qr")
+async def qr_generate(message: types.Message):
+    args = message.get_args()
+    if not args:
+        return
+    user: models.User = models.User.get((models.User.chat_id == message.chat.id))
+    path = await generate_and_save(user, args)
+    await bot.send_photo(message.chat.id, photo=open(path, "rb").read())
 
 @dp.message_handler(IsAdmin(), commands="admin")
 async def clear_keyboard(message: types.Message):
@@ -151,7 +167,7 @@ async def promocode_enter(message: types.Message, state: FSMContext):
     chat_id = message.chat.id
     await state.finish()
     promocode_models = Promocode.select().where((Promocode.date == datetime.datetime.now().date().strftime("%Y-%m-%d")),
-                                                (Promocode.code == promocode))
+                                                (peewee.fn.LOWER(Promocode.code) == promocode.lower()))
     if not len(promocode_models):
         await bot.send_message(chat_id, messages.promocode_not_found_message)
         return
@@ -209,7 +225,6 @@ async def daily_report(message: types.Message):
 async def promocode_button(message: types.Message, state: FSMContext):
     await bot.send_message(message.chat.id, messages.enter_promocode_message)
     await UserState.entering_promocode.set()
-    await state.update_data({"id": 4})
 
 
 @dp.message_handler(IsAdmin(), filters.Text(equals=messages.turn_on_admin))
