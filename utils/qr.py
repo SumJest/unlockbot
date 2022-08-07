@@ -13,8 +13,6 @@ hsize = int((float(logo.size[1]) * float(wpercent)))
 logo = logo.resize((basewidth, hsize), Image.ANTIALIAS)
 
 
-
-
 async def generate_and_save(user: User, data) -> str:
     qr_code = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H)
     qr_code.add_data(data)

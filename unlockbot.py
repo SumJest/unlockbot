@@ -101,7 +101,7 @@ async def start(message: types.Message):
                                reply_markup=km.getMainKeyboard(user))
         return
     except:
-        pass
+        logging.info(f"User ({args}, {username if username is not None else ''}, {message.chat.id}) tries to log in")
 
     data = await unlock_api.sendUserData(username, args)
     logging.info(f"New user with data: {data}")
@@ -115,11 +115,13 @@ async def start(message: types.Message):
     user.save()
     await bot.send_message(message.chat.id, messages.welcome_message.format(name=user_object["first"]),
                            reply_markup=km.getMainKeyboard(user))
-    if "qr" in user_object:
+    if "qr" in user_object.keys() and user_object["qr"] is not None:
         qr_data = user_object["qr"]
         qr_file = await generate_and_save(user, qr_data)
         await bot.send_message(message.chat.id, messages.qr_code_message)
         await bot.send_photo(message.chat.id, photo=open(qr_file, "rb").read())
+    await bot.send_message(message.chat.id, messages.tutorial)
+
 
 @dp.message_handler(IsAdmin(), commands="clear")
 async def clear_keyboard(message: types.Message):
@@ -135,6 +137,7 @@ async def qr_generate(message: types.Message):
     user: models.User = models.User.get((models.User.chat_id == message.chat.id))
     path = await generate_and_save(user, args)
     await bot.send_photo(message.chat.id, photo=open(path, "rb").read())
+
 
 @dp.message_handler(IsAdmin(), commands="admin")
 async def clear_keyboard(message: types.Message):
@@ -379,7 +382,7 @@ async def question_select_event(callback: types.CallbackQuery):
 
     question_model: Question = questions_list[0]
 
-    await start_question(question_model.id, question_model.text)
+    await start_question(question_model.id)
 
 
 @dp.callback_query_handler(CallbackType("registration_select"))
