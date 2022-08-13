@@ -20,7 +20,14 @@ class UnlockAPI:
             async with session.get(
                     self.url + function, params=params) as resp:
                 data = await resp.text()
-        return json.loads(data)
+
+        try:
+            json_data = json.loads(data)
+        except:
+            logging.error(f"Server returns non-json data url:{function}, params: {params}")
+            return {"success": False}
+
+        return json_data
 
     async def _post(self, function: str, body=None):
         if body is None:
@@ -33,7 +40,7 @@ class UnlockAPI:
         try:
             json_data = json.loads(data)
         except:
-            logging.error(f"Server returns non-json data: {data}")
+            logging.error(f"Server returns non-json data url:{function}, data: {body}")
             return {"success": False}
 
         return json_data
@@ -73,9 +80,10 @@ class UnlockAPI:
     async def sendPromocode(self, user_id: int, code_id: str):
         # type 1
         data = await self._post("bot/answer/", {"id": user_id, "function_id": code_id, "type": 1})
+        return data 
         pass
 
-    async def update_db(self):
+    async def update_db(self) -> bool:
         data = await self._get("bot/functions")
         Registration.delete().execute()
         Option.delete().execute()
@@ -83,6 +91,8 @@ class UnlockAPI:
         Question.delete().execute()
         Vote.delete().execute()
         Choice.delete().execute()
+        if "data" not in data.keys():
+            return False
         for function in data["data"]:
             try:
                 if function["TYPE"] == 1:  # promocode
@@ -107,3 +117,4 @@ class UnlockAPI:
             except Exception as e:
                 logging.error(traceback.format_exc())
                 continue
+        return True

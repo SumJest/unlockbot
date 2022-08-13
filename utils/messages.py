@@ -16,7 +16,7 @@ user_not_found = "Я не нашёл тебя в базе данных, пожа
 
 score_message = "У тебя <b>{score}</b> битов"
 
-daily_report_message = "{report}\n\nВ итоге у тебя <b>{daily_score}</b> битов за сегодня"
+daily_report_message = "{report}\n\n"
 
 error_message = "Произошла ошибка. Ваши верные подданые уже бегут её исправлять"
 
@@ -36,7 +36,7 @@ ok_message = "Окей"
 
 updated_message = "Обновлено"
 
-promocode_not_found_message = "Такой промокод не найден, проверь правильно ли ты его ввел"
+promocode_not_found_message = "Такой промокод не найден, проверь, правильно ли ты его ввёл"
 
 choose_what_to_send_message = "Выберете, что я должен отправить"
 
@@ -46,7 +46,7 @@ send_confirmation_message = "Отправить это {info}?"
 
 question_arrived_message = "У меня к тебе появился вопрос. Ответишь?"
 
-question_message = "{question}\n\nЧтобы ответить на вопрос напиши мне сообщение с ответом"
+question_message = "{question}\n\nЧтобы ответить на вопрос, напиши мне сообщение с ответом"
 
 qr_code_message = "Вот твой персональный QR-код, сохрани его к себе, чтобы не потерять!"
 

@@ -45,7 +45,7 @@ logging.basicConfig(
     ]
 )
 
-unlock_api = UnlockAPI("https://cs86022-django-j72e9.tw1.ru/")
+unlock_api = UnlockAPI("https://cw65021-django-wvkb6.tw1.ru/")
 
 
 class UserState(StatesGroup):
@@ -59,9 +59,10 @@ async def broadcast(text: str):
     for user in users:
         await asyncio.sleep(0.040)  # not more than 30 per second (25)
         try:
-            await bot.send_message(user.chat_id, text)
+            await bot.send_message(user.chat_id, text, reply_markup=km.getMainKeyboard(user))
         except:
-            pass
+            logging.error(traceback.format_exc())
+            logging.error(user.id)
 
 
 async def start_voting(vote_id: int, vote: str, choices):
@@ -70,7 +71,12 @@ async def start_voting(vote_id: int, vote: str, choices):
 
     for user in users:
         await asyncio.sleep(0.040)  # not more than 30 per second (25)
-        await bot.send_message(user.chat_id, vote, reply_markup=keyboard)
+        try:
+            await bot.send_message(user.chat_id, vote, reply_markup=keyboard)
+        except:
+
+            logging.error(traceback.format_exc())
+            logging.error(user.id)
 
 
 async def start_question(question_id: int):
@@ -78,8 +84,12 @@ async def start_question(question_id: int):
 
     for user in users:
         await asyncio.sleep(0.040)  # not more than 30 per second (25)
-        await bot.send_message(user.chat_id, messages.question_arrived_message,
-                               reply_markup=km.getAnswerKeyboard(question_id))
+        try:
+            await bot.send_message(user.chat_id, messages.question_arrived_message,
+                                   reply_markup=km.getAnswerKeyboard(question_id))
+        except:
+            logging.error(traceback.format_exc())
+            logging.error(user.id)
 
 
 async def start_registration(registration_id: int, registration_text: str, options):
@@ -88,7 +98,11 @@ async def start_registration(registration_id: int, registration_text: str, optio
 
     for user in users:
         await asyncio.sleep(0.040)  # not more than 30 per second (25)
-        await bot.send_message(user.chat_id, registration_text, reply_markup=keyboard)
+        try:
+            await bot.send_message(user.chat_id, registration_text, reply_markup=keyboard)
+        except:
+            logging.error(traceback.format_exc())
+            logging.error(user.id)
 
 
 @dp.message_handler(commands="start")
@@ -179,12 +193,25 @@ async def promocode_enter(message: types.Message, state: FSMContext):
     text = promocode_model.answer
     photo = promocode_model.photo
 
-    if text is not None:
-        await bot.send_message(chat_id, text)
-    if photo is not None:
-        await bot.send_photo(chat_id, photo)
+    data = await unlock_api.sendPromocode(user.id, promocode_model.id)
+    if data["success"]:
+        if text is not None:
+            await bot.send_message(chat_id, text)
+        if photo is not None:
+            await bot.send_photo(chat_id, photo)
 
-    await unlock_api.sendPromocode(user.id, promocode_model.id)
+
+    else:
+        await bot.send_message(chat_id, data["msg"])
+    # await unlock_api.sendPromocode(user.id, promocode_model.id)
+
+# if data["success"]:
+#     await bot.edit_message_text(callback.message.text + f"\n\n {messages.voted.format(choice=choice.name)}",
+#                                 chat_id,
+#                                 callback.message.message_id)
+# else:
+#     await bot.send_message(chat_id, data["msg"])
+#     await callback.answer()
 
 
 @dp.message_handler(IsAdmin(), state=UserState.admin_broadcast)
@@ -278,8 +305,11 @@ async def back_button(message: types.Message):
 
 @dp.message_handler(IsAdmin(), filters.Text(equals=messages.update_db))
 async def update_db(message: types.Message):
-    await unlock_api.update_db()
-    await bot.send_message(message.chat.id, messages.updated_message)
+    result = await unlock_api.update_db()
+    if result:
+        await bot.send_message(message.chat.id, messages.updated_message)
+    else:
+        await bot.send_message(message.chat.id, messages.error_message)
 
 
 @dp.message_handler(IsAdmin(), filters.Text(equals=messages.votes))
