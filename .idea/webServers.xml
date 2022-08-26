@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="684e1379-b137-40c9-8cc8-7340acd9b40e" name="boton">
+        <fileTransfer rootFolder="/var/www/boton/profcom/unlockbot" accessType="SFTP" host="hosting02.urc.ac.ru" port="22" sshConfigId="4f77fa26-358a-44f6-ac9a-5f8782e29cf2" sshConfig="boton_profcom@hosting02.urc.ac.ru:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

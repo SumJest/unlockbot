@@ -45,7 +45,7 @@ logging.basicConfig(
     ]
 )
 
-unlock_api = UnlockAPI("https://cw65021-django-wvkb6.tw1.ru/")
+unlock_api = UnlockAPI(config.getUnlockApiURL())
 
 
 class UserState(StatesGroup):

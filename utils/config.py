@@ -15,3 +15,7 @@ def getAdmin():
 
 def getDatabasePath():
     return config["DataBase"]["path"]
+
+
+def getUnlockApiURL():
+    return config["UnlockAPI"]["url"]
